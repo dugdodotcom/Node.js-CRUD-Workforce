@@ -1,0 +1,22 @@
+{
+    "name": "CRUD_Mongo"
+  , "description": "A demo of CRUD"
+  , "version": "1.0.0"
+  , "private": false
+  , "author": "Alfado Puja Kusuma"
+ 
+  , "scripts": {
+      "start": "./node_modules/.bin/nodemon server.js"
+    }
+  , "dependencies": {
+      "express": "latest"
+    , "jade": "latest"
+    , "mongoose": "latest"
+    , "connect-mongo": "latest"
+    , "connect-flash": "latest"
+    , "underscore": "latest"
+    , "gzippo": "latest"
+    , "async": "latest"
+    , "nodemon": "latest"
+  }
+}

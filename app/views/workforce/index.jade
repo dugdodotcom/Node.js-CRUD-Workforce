@@ -1,0 +1,44 @@
+extends ../layouts/default
+
+block main
+	h1 Workforces
+
+block content
+	a(href='/workforce/new', title="article listing") 
+		button.btn.btn-primary(type='button') Add Workforce	
+
+	table.table.table-hover.table-striped
+		thead
+			tr
+				th #
+				th Name
+				th Handle
+				th Status
+				th Date
+				th Action
+		tbody		
+			- var i=1
+			each workforce in workforces
+				tr
+					td
+						=i
+					td 
+						=workforce.name
+					td 
+						=workforce.handle
+					td 
+						=workforce.status
+					td 
+						=workforce.date	
+					td
+						form.center.form-inline.confirm(action="/workforce/"+workforce.id, method="post")
+							a.btn(href='/workforce/'+workforce._id+'/edit', title="edit") Edit
+							&nbsp;&nbsp;
+							input(type="hidden", name="_method", value="DELETE")
+							button.btn.btn-danger(type="submit") delete
+				- i++
+
+	if (pages > 1)
+		.pagination
+			ul
+			!= createPagination(pages, page)

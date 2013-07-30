@@ -1,0 +1,57 @@
+extends ../layouts/default
+
+block content
+  - var action = '/workforce'
+  if (!workforce.isNew)
+    - action += '/'+workforce.id
+
+  if (typeof errors !== 'undefined')
+    .fade.in.alert.alert-block.alert-error
+      a.close(data-dismiss="alert", href="javascript:void(0)") x
+      ul
+        each error in errors
+          li= error.type
+
+  .row
+    .span7
+      form.form-horizontal(method="post", action=action, enctype="multipart/form-data")
+        if (!workforce.isNew)
+          input(type="hidden", name="_method", value="PUT")
+
+        .control-group
+          label.control-label(for='name') Name
+          .controls
+            input#title.input-xlarge(type='text', name="name", value=workforce.name, placeholder='Enter the name')
+
+        .control-group
+          label.control-label(for='desc') Handle
+          .controls
+            textarea#desc.input-xlarge(type='text', rows="5", name="handle", placeholder='Enter the workforce handle')=workforce.handle
+
+        .control-group
+          label.control-label(for='status') Status
+          .controls
+            label.radio.inline
+              input(type="radio", name="status", id="optionsRadios1", value="A", checked=workforce.status=="A")
+              |A
+                
+            label.radio.inline
+              input(type="radio", name="status", id="optionsRadios2", value="T", checked=workforce.status=="T")
+              |T
+              
+            label.radio.inline
+              input(type="radio", name="status", id="optionsRadios3", value="D", checked=workforce.status=="D")
+              |D              
+
+        .control-group
+          label.control-label(for='password') Password
+          .controls
+            input#password(type='password', name="inpassword", placeholder='Password')
+
+        .form-actions
+          button.btn.btn-primary(type='submit') Save changes
+          &nbsp;
+          a.btn(href='/workforce', title="cancel") Cancel
+    .span5
+      if (!workforce.isNew && workforce.image && workforce.image.files && workforce.image.files.length)
+        img(src=workforce.image.cdnUri + '/mini_' + workforce.image.files[0])
