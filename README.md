@@ -4,4 +4,4 @@ CRUD with express
 
 - npm install
 
-- npm server
+- node server.js
