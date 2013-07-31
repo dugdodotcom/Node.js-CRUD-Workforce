@@ -18,5 +18,7 @@
     , "gzippo": "latest"
     , "async": "latest"
     , "nodemon": "latest"
+    , "passport": "latest"
+    , "passport-local": "latest"
   }
 }

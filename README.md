@@ -1,7 +1,4 @@
 CRUD with express
 
-<h1>Install mongodb first</h1>
-
-- npm install
-
-- node server.js
+- To register admin go to localhost:3000/signup
+- Then delete the app.get('/signup', users.signup) in config/routes.js

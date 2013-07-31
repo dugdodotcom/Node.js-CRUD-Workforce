@@ -48,7 +48,9 @@ module.exports = function (app, config, passport) {
     // connect flash for flash messages
     app.use(flash())
 
-
+	// use passport session
+    app.use(passport.initialize())
+    app.use(passport.session())
     app.use(express.favicon())
 
     // routes should be at the last
